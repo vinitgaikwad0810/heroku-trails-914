@@ -152,6 +152,11 @@ var page = function( req, res, state, ts ) {
 
 var order = function( req, res, state, ts ) {
 
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://52.24.136.109:27017,52.35.94.222:27017,52.33.102.9:27017/test?w=0&readPreference=secondary";
+
+
+ MongoClient.connect(url, function(err, db) {
   db.collection('gumball', function(err, collection) {
 
         collection.find( {serialNumber: '1234998871109'}).toArray( function(err, results) {
@@ -177,6 +182,8 @@ var order = function( req, res, state, ts ) {
 
 
     } ) ;
+
+});
 
 }
 
